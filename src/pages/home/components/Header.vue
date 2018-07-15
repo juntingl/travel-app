@@ -30,9 +30,10 @@ export default {
     background: $bgColor
     color: #fff
     .header-left
-      width: .64rem
+      width: .66rem
       float: left
       .back-icon
+        padding: 0 .2rem
         text-align: center
         font-size: .4rem
     .header-input
@@ -46,7 +47,7 @@ export default {
       border-radius: .1rem
       color: #ccc
     .header-right
-      min-width: 1.24rem
+      min-width: 1.04rem
       padding: 0 .1rem
       float: right
       text-align: center
