@@ -1,9 +1,13 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <!-- slides -->
       <swiper-slide v-for="(page, index) of pages" :key="index">
-        <div class="icon" v-for="item of page" :key="item.id">
+        <div
+          class="icon"
+          v-for="item of page"
+          :key="item.id"
+        >
           <div class="icon-img">
             <img class="icon-img-content" :src="item.imgUrl" alt="">
           </div>
@@ -11,7 +15,7 @@
         </div>
       </swiper-slide>
       <!-- Optional controls -->
-      <!-- <div class="swiper-pagination"  slot="pagination"></div> -->
+      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -21,6 +25,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      // Swiper 配置项
+      swiperOption: {
+      },
       iconList: [
         {
           id: '0001',
