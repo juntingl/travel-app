@@ -6,10 +6,13 @@
     <div class="header-input">
       <span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题
     </div>
-    <div class="header-right">
-      {{city}}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+
+    <router-link to="/city">
+      <div class="header-right">
+        {{city}}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -28,8 +31,8 @@ export default {
   /* 设计图是 2倍的设计图，6s 750px 的设计图，所以实际尺寸缩 2 倍 */
   .header
     display: flex
-    line-height: .86rem
-    height: .86rem
+    line-height: $headerHeight
+    height: $headerHeight
     background: $bgColor
     color: #fff
     .header-left
@@ -54,6 +57,7 @@ export default {
       padding: 0 .1rem
       float: right
       text-align: center
+      color: #fff
       .arrow-icon
         margin-right: -.04rem
         font-size: .24rem
