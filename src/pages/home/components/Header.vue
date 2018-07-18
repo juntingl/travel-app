@@ -17,12 +17,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Header',
-  data () {
-    return {
-      city: this.$store.state.city
-    }
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -61,6 +61,6 @@ export default {
       text-align: center
       color: #fff
       .arrow-icon
-        margin-right: -.04rem
+        margin-left: -.04rem
         font-size: .24rem
 </style>

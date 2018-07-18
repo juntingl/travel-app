@@ -6,7 +6,7 @@
         <div class="button-list">
           <div class="button-wrapper">
             <div class="button">
-              {{this.$store.state.city}}
+              {{currentCity}}
             </div>
           </div>
         </div>
@@ -36,6 +36,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="hanleCityClick(innerItem.name)"
           >
             {{innerItem.name}}
           </div>
@@ -47,6 +48,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'CityList',
@@ -57,7 +59,6 @@ export default {
   },
   watch: {
     letter () {
-      console.log(this.letter)
       // 更具每个区域 ref 的标示，来进行滚动
       if (this.letter) {
         const element = this.$refs[this.letter][0] // 获取当前区域的 DOM
@@ -65,13 +66,21 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   },
   methods: {
     hanleCityClick (city) {
-      this.$store.dispatch('changeCity', city)
-    }
+      // this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapActions(['changeCity'])
   }
 }
 </script>
