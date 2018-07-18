@@ -19,8 +19,10 @@
 <script>
 export default {
   name: 'Header',
-  props: {
-    city: String
+  data () {
+    return {
+      city: this.$store.state.city
+    }
   }
 }
 </script>
