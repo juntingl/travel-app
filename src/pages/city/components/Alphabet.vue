@@ -32,8 +32,15 @@ export default {
   },
   data () {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0,
+      timer: null
     }
+  },
+  // 数据更新，页面渲染完执行此方法
+  updated () {
+    // 这个时候 Alphabet DOM 已渲染完，这个时候获取 offsetTop 就不会出错
+    this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
     handleLetterClick (e) {
@@ -46,13 +53,18 @@ export default {
     handleTouchMove (e) {
       // 根据手指 touch 距离顶部的距离，除以每个字母的高度，获取对应的字母的下标
       if (this.touchStatus) {
-        const startY = this.$refs['A'][0].offsetTop
-        const touchY = e.touches[0].clientY - 79
-        const index = Math.floor((touchY - startY) / 20)
-
-        if (index >= 0 && index < this.letters.length) {
-          this.$emit('change', this.letters[index])
+        // 函数节流，减少 handleTouchMove 函数执行频率，大大提升性能
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
       }
     },
     handleTouchEnd () {
