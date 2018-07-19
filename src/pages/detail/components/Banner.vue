@@ -7,7 +7,7 @@
     <div class="banner-info">
       <div class="banner-title">大连圣亚海洋世界（AAA景点）</div>
       <div class="banner-number">
-        <span class="iconfont banner-icon">&#xe632;</span>39
+        <span class="iconfont banner-icon">&#xe678;</span> 39
       </div>
     </div>
   </div>
