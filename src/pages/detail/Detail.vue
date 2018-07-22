@@ -5,6 +5,7 @@
     <div class="content">
       <detail-list :list="list"></detail-list>
     </div>
+      <div style="height: 699px"></div>
   </div>
 </template>
 
@@ -24,7 +25,15 @@ export default {
     return {
       list: [
         {
-          title: '成人票'
+          title: '成人票',
+          children: [
+            {
+              title: '深圳欢乐谷成人票（日夜场通玩）',
+              children: [
+                { title: '深圳欢乐谷成人票（日夜场通玩）-- 谋馆' }
+              ]
+            }
+          ]
         },
         {
           title: '学生票'
