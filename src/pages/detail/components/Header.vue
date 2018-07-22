@@ -35,6 +35,7 @@ export default {
   methods: {
     handleScroll () {
       let top = document.documentElement.scrollTop
+      console.log('全局事件，需要记得移除事件：', top)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
@@ -47,6 +48,11 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  // keep-alive 组件停用时调用。
+  deactivated () {
+    // 监听的是全局事件，为了防止当前组件监听的事件溢出到别的组件里，当离开此组件时,移除监听事件
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
