@@ -31,6 +31,9 @@ export default {
         },
         {
           title: '儿童票'
+        },
+        {
+          title: '特惠票'
         }
       ]
     }
