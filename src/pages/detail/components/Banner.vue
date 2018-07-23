@@ -3,17 +3,17 @@
     <div class="banner" @click="handleBannerClick">
       <img
         class="banner-img"
-        src="http://img1.qunarzz.com/sight/p0/201309/27/661acb22614eae2bc8d65eac.jpg_600x330_2200e5bf.jpg" alt="">
+        :src="bannerImg" alt="">
 
       <div class="banner-info">
-        <div class="banner-title">大连圣亚海洋世界（AAA景点）</div>
+        <div class="banner-title">{{sightName}}</div>
         <div class="banner-number">
-          <span class="iconfont banner-icon">&#xe678;</span> 39
+          <span class="iconfont banner-icon">&#xe678;</span> {{gallaryImgs.length}}
         </div>
       </div>
     </div>
     <common-gallay
-      :imgs="imgs"
+      :imgs="gallaryImgs"
       v-show="showGallary"
       @handleGallaryClick="handleGallaryClose"
     ></common-gallay>
@@ -28,10 +28,14 @@ export default {
   components: {
     CommonGallay
   },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   data () {
     return {
-      showGallary: false,
-      imgs: ['http://img1.qunarzz.com/sight/p0/201309/27/661acb22614eae2bc8d65eac.jpg_r_800x800_f2b5b8c3.jpg', 'http://img1.qunarzz.com/sight/p0/201309/27/b41a33ab5bf755bac8d65eac.jpg_r_800x800_f97a3cb5.jpg']
+      showGallary: false
     }
   },
   methods: {
