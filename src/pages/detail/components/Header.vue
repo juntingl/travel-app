@@ -8,6 +8,7 @@
     >
       <div class="iconfont header-abs-back">&#xe624;</div>
     </router-link>
+
     <div
       class="header-fixed"
       v-show="!showAbs"
@@ -35,7 +36,7 @@ export default {
   methods: {
     handleScroll () {
       let top = document.documentElement.scrollTop
-      console.log('全局事件，需要记得移除事件：', top)
+      // console.log('全局事件，需要记得移除事件：', top)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
